@@ -1,4 +1,5 @@
 class Micropost < ActiveRecord::Base
+  has_many :comments,dependent: :destroy
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
    mount_uploader :picture, PictureUploader
@@ -13,5 +14,11 @@ class Micropost < ActiveRecord::Base
         errors.add(:picture, "should be less than 5MB")
       end
     end
+    def delete_micropost
+    Micropost.find_by(:micropost).destroy
+  end
 
+  def feed_comments
+    Comment.where("micropost_id = ?", id)
+  end
 end

@@ -16,12 +16,18 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
 
-  resources :users
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
+
 resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
 
-  resources :microposts,          only: [:create, :destroy]
-
+  resources :microposts
+  resources :comments,          only: [:create, :destroy]
+resources :relationships,       only: [:create, :destroy]
   #get 'static_pages/...'
 
   # The priority is based upon order of creation: first created -> highest priority.

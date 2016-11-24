@@ -25,6 +25,7 @@ group :development, :test do
   gem 'web-console', '2.0.0.beta3'
   gem 'spring',      '1.1.3'
   gem 'pry-rails'
+  gem 'better_errors'
 end
 
 group :test do
