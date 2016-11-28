@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 20161123031153) do
 
   add_index "comments", ["micropost_id", "created_at"], name: "index_comments_on_micropost_id_and_created_at"
   add_index "comments", ["micropost_id"], name: "index_comments_on_micropost_id"
+  add_index "comments", ["user_id", "created_at"], name: "index_comments_on_user_id_and_created_at"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "microposts", force: :cascade do |t|
