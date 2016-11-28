@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     if @comment.save
       flash[:success] = "Comment created!"
-      redirect_to root_path
+      redirect_to :back
 
     else
       render 'static_pages/home'
